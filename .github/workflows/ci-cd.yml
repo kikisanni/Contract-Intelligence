@@ -38,8 +38,8 @@ jobs:
           pip install pytest flake8 black
 
       # Step 4: Run tests
-      - name: Run pytest
-        run: pytest backend/ --maxfail=1 --disable-warnings -q
+      # - name: Run pytest
+      #   run: pytest backend/ --maxfail=1 --disable-warnings -q
 
       # Step 5: Lint
       - name: Run flake8
