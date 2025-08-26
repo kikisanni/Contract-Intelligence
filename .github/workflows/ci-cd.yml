@@ -1,0 +1,73 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'backend/**'
+      - 'frontend/**'
+      - '.github/workflows/ci-cd.yml'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - 'backend/**'
+      - 'frontend/**'
+      - '.github/workflows/ci-cd.yml'
+
+jobs:
+  # ======================
+  # Backend CI/CD
+  # ======================
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: |
+          pip install -r backend/requirements.txt
+          pip install pytest flake8 black
+
+      # Step 4: Run tests
+      - name: Run pytest
+        run: pytest backend/ --maxfail=1 --disable-warnings -q
+
+      # Step 5: Lint
+      - name: Run flake8
+        run: flake8 backend/ --count --select=E9,F63,F7,F82 --show-source --statistics
+
+      - name: Run black (check formatting)
+        run: black --check backend/
+
+  # ======================
+  # Frontend CI/CD (commented for now)
+  # ======================
+  # frontend:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+  #
+  #     - name: Set up Node.js
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: "18"
+  #
+  #     - name: Install dependencies
+  #       run: |
+  #         cd frontend
+  #         npm install
+  #
+  #     - name: Run tests
+  #       run: |
+  #         cd frontend
+  #         npm test -- --watchAll=false
