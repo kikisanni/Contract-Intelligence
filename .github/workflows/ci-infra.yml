@@ -1,0 +1,28 @@
+# name: Infra CI
+
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     paths:
+#       - "infra/**"
+
+# jobs:
+#   infra-checks:
+#     name: Run Infra Validation
+#     runs-on: ubuntu-latest
+
+#     defaults:
+#       run:
+#         working-directory: infra
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v3
+
+#       - name: Install Infra Dependencies
+#         run: pip install -r requirements.txt
+
+#       - name: Validate infra
+#         run: echo "Infra validation placeholder"
