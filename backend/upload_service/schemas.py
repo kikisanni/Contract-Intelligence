@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from datetime import datetime
-import uuid
+from uuid import UUID
 
 
 class ContractBase(BaseModel):
@@ -12,8 +12,8 @@ class ContractCreate(ContractBase):
 
 
 class ContractOut(ContractBase):
-    id: uuid.UUID
+    id: UUID
     upload_date: datetime
 
     class Config:
-        orm_mode = True # Needed so Pydantic can read SQLAlchemy objects
+        from_attributes = True # Needed so Pydantic can read SQLAlchemy objects

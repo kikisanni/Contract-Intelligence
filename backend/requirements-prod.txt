@@ -1,0 +1,20 @@
+# === Core Web Framework ===
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+
+# === ORM & DB ===
+sqlalchemy==2.0.31
+alembic==1.13.2
+psycopg2==2.9.9          # Production-grade Postgres driver
+
+# === Config Management ===
+pydantic==2.7.1
+python-dotenv==1.0.1
+
+# === AWS S3 Support ===
+boto3==1.34.122
+botocore==1.34.122
+urllib3<2                # ensure boto3/botocore compatibility
+
+# === Optional but recommended ===
+loguru==0.7.2            # structured logging
