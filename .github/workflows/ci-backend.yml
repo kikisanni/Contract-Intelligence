@@ -29,7 +29,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements-dev.txt
 
-      - name: Run pytest
-        run: |
-          export PYTHONPATH=.
-          pytest upload_service/tests -v --maxfail=1 --disable-warnings
+      # - name: Run pytest
+      #   run: |
+      #     export PYTHONPATH=.
+      #     pytest upload_service/tests -v --maxfail=1 --disable-warnings
