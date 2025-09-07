@@ -30,4 +30,4 @@ async def upload_contract(file: UploadFile, db: Session = Depends(get_db)):
     return db_contract
 
 
-# run with fastapi dev backend/upload_service/main.py --app upload_service.main:app to treat it as a package
+# run with uvicorn upload_service.main:app --reload to treat it as a package. Run this inside of backend dir
